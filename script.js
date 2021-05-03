@@ -21,6 +21,6 @@ async function thredict(){
     let input = document.getElementById("in").value;
     let intl = parseInt(input);
     const sumk = await tf.loadLayersModel('localstorage://mothel');
-    document.getElementById('out').innerText = sumk.predict(tf.tensor2d([intl],[1,1]))
+    document.getElementById('out').innerText = sumk.predict(tf.tensor2d([intl],[1,1])).arraySync();
 
 }

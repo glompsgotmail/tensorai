@@ -2,16 +2,18 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <label for="epochs">Epochs:</label>
+    <label for="epochs">Generations:</label>
     <input id="epochs">
-    <button id="button" onclick="gaber()">Train!</button>
+    <br>
+    <button id="trainingbtn" onclick="gaber()">Train!</button>
     <br>
     <label for="in">Input:</label>
     <input id="in">
     <br>
-    <button onclick="thredict()">Predict!</button>
+    <button onclick="thredict()" id = "predictionbtn">Predict!</button>
     <div id="out"></div>
 </body>
 
