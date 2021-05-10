@@ -22,12 +22,12 @@ let a = tf.variable(tf.scalar(Math.random()));
 let b = tf.variable(tf.scalar(Math.random()));
 let c = tf.variable(tf.scalar(Math.random()));
 let d = tf.variable(tf.scalar(Math.random()));
-
+const learningRate = 0.0001;
+    const optimizer = tf.train.sgd(learningRate);
 
 // Step 2. Create an optimizer, we will use this later. You can play
 // with some of these values to see how the model performs.
-const learningRate = 0.0001;
-const optimizer = tf.train.sgd(learningRate);
+
 
 // Step 3. Write our training process functions.
 
@@ -70,16 +70,13 @@ function loss(prediction, labels) {
  * ys — training data y values
  */
 async function train(xs, ys, numIterations) {
+    const learningRate = 0.0025;
+    const optimizer = tf.train.sgd(learningRate);
+    let start = new Date();
+    let x = new Date();
   for (let iter = 0; iter < numIterations; iter++) {
-    // optimizer.minimize is where the training happens.
-
-    // The function it takes must return a numerical estimate (i.e. loss)
-    // of how well we are doing using the current state of
-    // the variables we created at the start.
-
-    // This optimizer does the 'backward' step of our training process
-    // updating variables defined previously in order to minimize the
-    // loss.
+    x = new Date();
+    document.getElementById("out").innerText = Math.round(100*(iter/numIterations)) + "%" + "\n" + iter + " of " + numIterations + " generations." + "\n" + Math.round(iter/(Math.round((x-start)/1000)))+ " generations/sec.";
     optimizer.minimize(() => {
       // Feed the examples into the model
       for(let i = 0; i<xs.length;i++){
@@ -107,8 +104,11 @@ async function learn() {
   // Train the model!
     await train(xarray, yarray, domestic);
     btn.disabled=false;
+    document.getElementById("out").innerText = "Done Training!";
+
 }
 
 async function thredict(){
     document.getElementById("out").innerText = predict(tf.tensor(parseInt(document.getElementById("in").value))).dataSync();
+    console.log(""+a.dataSync()+"\n"+b.dataSync()+"\n"+c.dataSync()+"\n"+d.dataSync());
 }
