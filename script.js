@@ -22,8 +22,6 @@ let a = tf.variable(tf.scalar(Math.random()));
 let b = tf.variable(tf.scalar(Math.random()));
 let c = tf.variable(tf.scalar(Math.random()));
 let d = tf.variable(tf.scalar(Math.random()));
-const learningRate = 0.0001;
-    const optimizer = tf.train.sgd(learningRate);
 
 // Step 2. Create an optimizer, we will use this later. You can play
 // with some of these values to see how the model performs.
@@ -70,7 +68,7 @@ function loss(prediction, labels) {
  * ys — training data y values
  */
 async function train(xs, ys, numIterations) {
-    const learningRate = 0.0025;
+    const learningRate = .0025;
     const optimizer = tf.train.sgd(learningRate);
     let start = new Date();
     let x = new Date();
